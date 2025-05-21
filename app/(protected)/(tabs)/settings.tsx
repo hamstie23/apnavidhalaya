@@ -10,14 +10,39 @@ export default function Settings() {
 
 	return (
 		<View className="flex-1 items-center justify-center bg-background p-4 gap-y-4">
-			<H1 className="text-center">Sign Out</H1>
-			<Muted className="text-center">
-				Sign out and return to the welcome screen.
-			</Muted>
+			<H1 className="text-center">Apna Vidhayalaya Settings</H1>
+
 			<Button
 				className="w-full"
 				size="default"
-				variant="default"
+				variant="outline"
+				onPress={() => {}}
+			>
+				<Text>Update Profile</Text>
+			</Button>
+
+			<Button
+				className="w-full"
+				size="default"
+				variant="outline"
+				onPress={() => {}}
+			>
+				<Text>Notification Preferences</Text>
+			</Button>
+
+			<Button
+				className="w-full"
+				size="default"
+				variant="outline"
+				onPress={() => {}}
+			>
+				<Text>About School</Text>
+			</Button>
+
+			<Button
+				className="w-full mt-8"
+				size="default"
+				variant="destructive"
 				onPress={async () => {
 					await signOut();
 				}}

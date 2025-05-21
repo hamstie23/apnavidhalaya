@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <rect width="512" height="512" fill="#4f46e5" rx="64" />
+  <path d="M256 96L128 160v160l128 64 128-64V160L256 96z" fill="#ffffff" />
+  <path d="M256 128L160 176v128l96 48 96-48V176L256 128z" fill="#4f46e5" />
+  <path d="M256 192L208 224v64l48 24 48-24v-64L256 192z" fill="#ffffff" />
+  <path d="M160 360h192v24H160z" fill="#ffffff" />
+  <text x="256" y="400" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#ffffff">Apna Vidhayalaya</text>
+</svg> 

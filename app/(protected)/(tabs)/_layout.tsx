@@ -24,8 +24,8 @@ export default function TabsLayout() {
 				tabBarShowLabel: false,
 			}}
 		>
-			<Tabs.Screen name="index" options={{ title: "Home" }} />
-			<Tabs.Screen name="settings" options={{ title: "Settings" }} />
+			<Tabs.Screen name="index" options={{ title: "School Home" }} />
+			<Tabs.Screen name="settings" options={{ title: "School Settings" }} />
 		</Tabs>
 	);
 }

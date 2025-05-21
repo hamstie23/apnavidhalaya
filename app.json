@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "ExpoSupabaseStarter",
-    "slug": "ExpoSupabaseStarter",
-    "scheme": "expo-supabase-starter",
+    "name": "Apna Vidhayalaya School App",
+    "slug": "ApnaVidhayalayaSchoolApp",
+    "scheme": "apna-vidhayalaya-school-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -30,7 +30,7 @@
         "dark": "./assets/icon-dark.png",
         "light": "./assets/icon.png"
       },
-      "bundleIdentifier": "com.flemingvincent.ExpoSupabaseStarter"
+      "bundleIdentifier": "com.flemingvincent.ApnaVidhayalayaSchoolApp"
     },
     "android": {
       "adaptiveIcon": {
