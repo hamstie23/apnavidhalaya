@@ -1,73 +1,35 @@
-import { Tabs } from "expo-router";
-import { Icon } from "@/components/ui/icon";
+import { Stack } from "expo-router";
+import { View, StyleSheet, ScrollView, SafeAreaView } from "react-native";
+import AdminSidebar from "@/components/admin/AdminSidebar";
 
 export default function AdminLayout() {
-  return (
-    <Tabs
-      screenOptions={{
-        tabBarStyle: {
-          backgroundColor: "#fff",
-          borderTopWidth: 1,
-          borderTopColor: "#E5E7EB",
-        },
-        tabBarActiveTintColor: "#4F46E5",
-        tabBarInactiveTintColor: "#6B7280",
-      }}
-    >
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: "Dashboard",
-          tabBarIcon: ({ color, size }) => (
-            <Icon icon="ph:house" color={color} size={size} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="users"
-        options={{
-          title: "Users",
-          tabBarIcon: ({ color, size }) => (
-            <Icon icon="ph:users" color={color} size={size} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="calendar"
-        options={{
-          title: "Calendar",
-          tabBarIcon: ({ color, size }) => (
-            <Icon icon="ph:calendar" color={color} size={size} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="announcements"
-        options={{
-          title: "Announcements",
-          tabBarIcon: ({ color, size }) => (
-            <Icon icon="ph:bell" color={color} size={size} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="chat"
-        options={{
-          title: "Chat",
-          tabBarIcon: ({ color, size }) => (
-            <Icon icon="ph:chat-circle" color={color} size={size} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="settings"
-        options={{
-          title: "Settings",
-          tabBarIcon: ({ color, size }) => (
-            <Icon icon="ph:gear" color={color} size={size} />
-          ),
-        }}
-      />
-    </Tabs>
-  );
+	return (
+		<SafeAreaView style={styles.container}>
+			<View style={styles.layoutContainer}>
+				<AdminSidebar />
+				<View style={styles.contentContainer}>
+					<Stack
+						screenOptions={{
+							headerShown: false,
+							contentStyle: { backgroundColor: "#F9FAFB" },
+						}}
+					/>
+				</View>
+			</View>
+		</SafeAreaView>
+	);
 }
+
+const styles = StyleSheet.create({
+	container: {
+		flex: 1,
+		backgroundColor: "#F9FAFB",
+	},
+	layoutContainer: {
+		flex: 1,
+		flexDirection: "row",
+	},
+	contentContainer: {
+		flex: 1,
+	},
+});

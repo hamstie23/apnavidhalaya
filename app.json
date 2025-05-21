@@ -52,7 +52,17 @@
     },
     "plugins": [
       "expo-router",
-      "expo-secure-store"
+      "expo-secure-store",
+      [
+        "expo-font",
+        {
+          "fonts": [
+            "node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf",
+            "node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf",
+            "node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"
+          ]
+        }
+      ]
     ]
   }
 }

@@ -1,115 +1,147 @@
-import React from "react";
-import { View, StyleSheet, ImageBackground } from "react-native";
-import { useRouter } from "expo-router";
-
+import { useState, useEffect } from "react";
+import { View, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { router } from "expo-router";
 import { SafeAreaView } from "@/components/safe-area-view";
+import { H1, H2, P, Muted } from "@/components/ui/typography";
 import { Button } from "@/components/ui/button";
-import { Text } from "@/components/ui/text";
-import { H1, Muted } from "@/components/ui/typography";
+import { Icon } from "@/components/ui/icon";
+import { useAuth } from "@/context/supabase-provider";
 
-export default function WelcomeScreen() {
-  const router = useRouter();
+export default function Welcome() {
+  const { session } = useAuth();
+  
+  // If user is already signed in, redirect to the appropriate dashboard
+  useEffect(() => {
+    if (session) {
+      router.replace("/(protected)");
+    }
+  }, [session]);
 
   return (
-    <ImageBackground
-      source={{ uri: "https://images.pexels.com/photos/5212345/pexels-photo-5212345.jpeg" }}
-      style={styles.background}
-    >
-      <SafeAreaView style={styles.container}>
-        <View style={styles.overlay}>
-          <View style={styles.content}>
-            <View style={styles.logoContainer}>
-              <Text style={styles.logoText}>AV</Text>
-            </View>
-            <H1 style={styles.title}>Apna Vidhayalaya</H1>
-            <Muted style={styles.subtitle}>
-              Empowering education through seamless communication and management
-            </Muted>
-          </View>
-          <View style={styles.buttonContainer}>
-            <Button
-              style={styles.button}
-              onPress={() => router.push("/sign-up")}
-            >
-              <Text style={styles.buttonText}>Get Started</Text>
-            </Button>
-            <Button
-              style={styles.secondaryButton}
-              variant="secondary"
-              onPress={() => router.push("/sign-in")}
-            >
-              <Text style={styles.secondaryButtonText}>Sign In</Text>
-            </Button>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.content}>
+        <View style={styles.header}>
+          <H1 style={styles.title}>Apna Vidhalaya</H1>
+          <H2 style={styles.subtitle}>School Management System</H2>
+        </View>
+        
+        <View style={styles.logoContainer}>
+          <View style={styles.logo}>
+            <Icon icon="ph:book-open" size={64} color="#4F46E5" />
           </View>
         </View>
-      </SafeAreaView>
-    </ImageBackground>
+        
+        <View style={styles.features}>
+          <View style={styles.featureItem}>
+            <Icon icon="ph:check-circle" size={24} color="#10B981" />
+            <P style={styles.featureText}>Complete school management</P>
+          </View>
+          
+          <View style={styles.featureItem}>
+            <Icon icon="ph:check-circle" size={24} color="#10B981" />
+            <P style={styles.featureText}>Student, teacher, parent portals</P>
+          </View>
+          
+          <View style={styles.featureItem}>
+            <Icon icon="ph:check-circle" size={24} color="#10B981" />
+            <P style={styles.featureText}>Administrative tools & dashboards</P>
+          </View>
+        </View>
+      </View>
+      
+      <View style={styles.actions}>
+        <Button 
+          style={styles.signInButton}
+          onPress={() => router.push("/sign-in")}
+        >
+          <P style={styles.signInText}>Sign In</P>
+        </Button>
+        
+        <TouchableOpacity 
+          style={styles.signUpLink}
+          onPress={() => router.push("/sign-up")}
+        >
+          <P style={styles.signUpText}>Don't have an account? <P style={styles.signUpHighlight}>Sign Up</P></P>
+        </TouchableOpacity>
+      </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  background: {
-    flex: 1,
-  },
   container: {
     flex: 1,
-  },
-  overlay: {
-    flex: 1,
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
-    justifyContent: "space-between",
-    padding: 24,
+    backgroundColor: "#fff",
   },
   content: {
     flex: 1,
-    justifyContent: "center",
     alignItems: "center",
-  },
-  logoContainer: {
-    width: 100,
-    height: 100,
-    borderRadius: 25,
-    backgroundColor: "rgba(255, 255, 255, 0.9)",
     justifyContent: "center",
-    alignItems: "center",
-    marginBottom: 24,
+    padding: 24,
   },
-  logoText: {
-    fontSize: 48,
-    fontWeight: "bold",
-    color: "#4F46E5",
+  header: {
+    alignItems: "center",
+    marginBottom: 40,
   },
   title: {
-    color: "white",
-    textAlign: "center",
-    marginBottom: 12,
+    fontSize: 36,
+    fontWeight: "700",
+    color: "#4F46E5",
+    marginBottom: 8,
   },
   subtitle: {
-    color: "rgba(255, 255, 255, 0.9)",
-    textAlign: "center",
-    maxWidth: "80%",
+    fontSize: 20,
+    color: "#6B7280",
   },
-  buttonContainer: {
+  logoContainer: {
+    marginBottom: 48,
+  },
+  logo: {
+    width: 120,
+    height: 120,
+    borderRadius: 60,
+    backgroundColor: "#EEF2FF",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  features: {
+    width: "100%",
+    gap: 16,
+  },
+  featureItem: {
+    flexDirection: "row",
+    alignItems: "center",
     gap: 12,
   },
-  button: {
-    backgroundColor: "#4F46E5",
-    borderRadius: 12,
-    height: 56,
+  featureText: {
+    fontSize: 16,
+    color: "#1F2937",
   },
-  buttonText: {
+  actions: {
+    width: "100%",
+    padding: 24,
+    gap: 16,
+  },
+  signInButton: {
+    backgroundColor: "#4F46E5",
+    height: 56,
+    borderRadius: 12,
+  },
+  signInText: {
     color: "white",
     fontSize: 18,
     fontWeight: "600",
   },
-  secondaryButton: {
-    backgroundColor: "rgba(255, 255, 255, 0.15)",
-    borderRadius: 12,
-    height: 56,
+  signUpLink: {
+    alignItems: "center",
+    padding: 8,
   },
-  secondaryButtonText: {
-    color: "white",
-    fontSize: 18,
+  signUpText: {
+    color: "#6B7280",
+    fontSize: 16,
+  },
+  signUpHighlight: {
+    color: "#4F46E5",
     fontWeight: "600",
   },
 });
